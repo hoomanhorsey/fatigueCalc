@@ -1,0 +1,49 @@
+/*DOCUMENT ALL */
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+body {
+    display: grid;
+    place-items: center;
+
+    background-color: #d1f7f4;
+}
+
+.container {
+    max-width: 600px;
+
+    display: grid;
+
+    place-items: center; /* shorthand for align-items + justify-items */
+}
+
+.title {
+    display: grid;
+
+    place-items: center;
+    text-align: center;
+}
+
+.twentyFourHourCalc,
+.fortyEightHourCalc,
+.lastSleepCalc {
+    display: grid;
+    place-items: center;
+}
+
+.selectForm {
+    display: grid;
+}
+
+.resultText {
+    display: grid;
+    place-items: center;
+}
+
+.submitBtn {
+    background-color: pink;
+    border-radius: 5px;
+    font-size: x-large;
+    margin: 10px;
+    padding: 10px;
+}

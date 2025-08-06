@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <link href="styles.css" rel="stylesheet" />
+    <title>Smol Fatigue Calc</title>
+
+    <script src="javascript.js"></script>
+
+  </head>
+
+  <body>
+    <!-- Sleep in prior 24 hours-->
+    <div class="container">
+
+    <div class="title">
+    <h1>Individual Fatigue Likelihood Assessment</h1>
+    </div>
+
+      <form id="sleep_form">
+<div class="twentyFourHourCalc">
+
+        <h3>Step 1 - Sleep in prior 24 hours</h3>
+
+        <select class="selectForm"  name="sleep_select_24" id="sleep_24_option">
+          <option value="2">Less than 2 hours - 12 points</option>
+          <option value="3">3 hours - 8 points</option>
+          <option value="4">4 hours - 4 points</option>
+          <option value="5">5 hours or more - 0 points</option>
+        </select>
+
+</div>
+
+<div class="fortyEightHourCalc">
+
+        <h3>Step 2 - Sleep in prior 48 hours</h3>
+
+        <select class="selectForm" name="sleep_select_48" id="sleep_48_option">
+          <option value="8">Less than 8 hours - 8 points</option>
+          <option value="9">9 hours - 6 points</option>
+          <option value="10">10 hours - 4 points</option>
+          <option value="11">11 hours - 2 points</option>
+          <option value="12">12 hours or more - 0 points</option>
+        </select>
+
+    </div>
+
+  <div class="lastSleepCalc">
+        <h3>Step 3 - Hours awake since last sleep</h3>
+        <input
+          autocomplete="off"
+          id="hours_since"
+          placeholder="hours awake"
+          type="number"
+          required
+        />
+        <input class="submitBtn" type="submit" value="Submit" />
+        
+      </form>
+
+      </div>
+
+    <!-- Points result-->
+    <div class="result">
+      <p id="result"></p>
+    </div>
+        </div>
+  </body>
+</html>
