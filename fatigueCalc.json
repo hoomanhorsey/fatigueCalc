@@ -1,0 +1,28 @@
+{
+    "name": "fatigueCalc",
+    "short_name": "fC",
+    "description": "Calculate your fatigue to determine fitness for flying",
+    "start_url": "...",
+    "theme_color": "...",
+    "background_color": "rgb(99, 207, 244)",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "FCIcon_48.png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "icons/FCIcon_128.png",
+            "sizes": "72x72 96x96",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/FCIcon_256.png",
+            "sizes": "128x128 256x256"
+        },
+        {
+            "src": "icons/FCIcon_512.png",
+            "sizes": "512x512"
+        }
+    ]
+}
