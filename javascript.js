@@ -65,17 +65,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // create element for display
         const p = document.createElement('p')
-        p.className = 'resultText' // sets the class
+        p.className = 'resultContainer' // sets the class
 
-        p.innerHTML = `<div class="resultsContainer">
-        <div>   <strong>Result </strong> </div>
+        p.innerHTML = `<div>   <strong>Result </strong> </div>
 
 <div class="resultText"> ${result} points. ${text_result}</div>
 
-<div class="resultSummary"> <strong>Summary:</strong> </div>
-<div> - ${sleep24} hours sleep in prior 24 hours (${points24} points) </div>
-<div> - ${sleep48} hours sleep in prior 48 hours (${points48} points)</div>
-<div> - ${hours_since_int} hours awake since last sleep (${step3_hours} hours awake greater than the ${sleep48} hours sleep in the prior 48 hours - ${step3_hours} points)</div>`
+<div class="resultText"> <strong>Summary</strong> </div><div class="resultText">- ${sleep24} hours sleep in prior 24 hours (${points24} points) </div><div class="resultText">- ${sleep48} hours sleep in prior 48 hours (${points48} points)</div><div class="resultText" >- ${hours_since_int} hours awake since last sleep (${step3_hours} hours awake greater than the ${sleep48} hours sleep in the prior 48 hours - ${step3_hours} points)</div>
+`
 
         // q.innerHTML =
         //     '<strong>' +
