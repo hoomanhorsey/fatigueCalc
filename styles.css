@@ -17,7 +17,7 @@ input {
     font-size: 1.6rem;
 }
 h1 {
-    font-size: 4rem;
+    font-size: 3.5rem;
 }
 h3 {
     font-size: 1.6rem;
@@ -81,8 +81,11 @@ h3 {
 .resultHeading {
     text-align: center;
 }
+.resultHeading {
+    font-size: 1.8rem;
+}
 .resultText {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 .btnContainer {
     display: grid;
