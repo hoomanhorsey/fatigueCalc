@@ -21,46 +21,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // calculate points of 24
 
-        if (sleep24 === 2) {
-            points24 = 12
-        } else if (sleep24 === 3) {
-            points24 = 8
-        } else if (sleep24 === 4) {
-            points24 = 4
-        } else {
-            points24 = 0
+        const sleepPointsMap24 = { 2: 12, 3: 8, 4: 4 }
+
+        function calc24(sleep24) {
+            return sleepPointsMap24[sleep24] ?? 0
         }
 
+        const points24 = calc24(sleep24)
+
+        const sleepPointsMap48 = { 8: 8, 9: 6, 10: 4, 11: 2 }
+
+        const points48 = calc48(sleep48)
+
+        function calc48(sleep48) {
+            return sleepPointsMap48[sleep48] ?? 0
+        }
         // calculate points of 48
-        if (sleep48 === 8) {
-            points48 = 8
-        } else if (sleep48 === 9) {
-            points48 = 6
-        } else if (sleep48 === 10) {
-            points48 = 4
-        } else if (sleep48 === 11) {
-            points48 = 2
-        } else {
-            points48 = 0
-        }
-        // calculate points of hours since
-        step3_hours = hours_since_int - sleep48
 
-        // resetting hours points.
-        if (step3_hours < 0) {
-            step3_hours = 0
+        const step3_hours = sinceLastSleep(hours_since_int, sleep48)
+        function sinceLastSleep(hours_since_int, sleep48) {
+            return hours_since_int - sleep48 < 0 ? 0 : hours_since_int - sleep48
+            condition ? valueIfTrue : valueIfFalse
+
+            // resetting hours points.
+            if (step3_hours < 0) {
+                step3_hours = 0
+            }
+
+            return hours_since_int - sleep48
         }
+
+        // calculate points of hours since
+        // step3_hours = hours_since_int - sleep48
 
         // calculate hours
         result = points24 + points48 + step3_hours
 
         // Calculating points score
-        if (result <= 5) {
-            text_result = 'Self-monitor'
-        } else if (result <= 10 && result >= 6) {
-            text_result = 'Notify SMOPS / Peer Monitoring'
-        } else {
-            text_result = 'Do not commence work until fit for duty'
+
+        const text_result = determineTextResult(result)
+        function determineTextResult(result) {
+            if (result <= 5) {
+                return 'Self-monitor'
+            } else if (result <= 10 && result >= 6) {
+                return 'Notify SMOPS / Peer Monitoring'
+            } else {
+                return 'Do not commence work until fit for duty'
+            }
         }
 
         // create element for display
@@ -73,31 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <div class="resultText"> <strong>Summary</strong> </div><div class="resultText">- ${sleep24} hours sleep in prior 24 hours (${points24} points) </div><div class="resultText">- ${sleep48} hours sleep in prior 48 hours (${points48} points)</div><div class="resultText" >- ${hours_since_int} hours awake since last sleep (${step3_hours} hours awake greater than the ${sleep48} hours sleep in the prior 48 hours - ${step3_hours} points)</div>
 `
-
-        // q.innerHTML =
-        //     '<strong>' +
-        //     text_result +
-        //     '</strong><br><br> Total of <strong>' +
-        //     result +
-        //     ' </strong> points ' +
-        //     '<br><br> Summary: <br><strong>' +
-        //     sleep24 +
-        //     ' </strong> hours sleep in prior 24 hours, which gives ' +
-        //     points24 +
-        //     ' points <br> <strong>' +
-        //     sleep48 +
-        //     ' </strong> hours sleep in prior 48 hours, which gives ' +
-        //     points48 +
-        //     ' points <br> <strong>' +
-        //     hours_since_int +
-        //     ' </strong> hours awake since last sleep, which is ' +
-        //     step3_hours +
-        //     ' hours awake greater than the ' +
-        //     sleep48 +
-        //     ' hours sleep in the prior 48 hours, which gives ' +
-        //     step3_hours +
-        //     ' points'
-
         // Display new element
         document.querySelector('#result').innerHTML = ''
         document.querySelector('#result').append(p)
