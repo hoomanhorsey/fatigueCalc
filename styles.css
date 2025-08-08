@@ -12,6 +12,18 @@ body {
     background-color: #d1f7f4;
 }
 
+select,
+input {
+    font-size: 1.6rem;
+}
+h1 {
+    font-size: 4rem;
+}
+h3 {
+    font-size: 1.6rem;
+    display: grid;
+    place-items: center;
+}
 .container {
     height: 100dvh;
     margin-top: 20px;
@@ -45,6 +57,7 @@ body {
 .lastSleepCalc {
     display: grid;
     place-items: center;
+    text-align: center;
 }
 
 .selectForm {
@@ -56,14 +69,25 @@ body {
     place-items: center;
     border-style: dashed;
     padding: 10px;
-    margin: 15px;
+    margin: 15px 15px 15px 15px;
     background-color: lightgoldenrodyellow;
+    border-width: 15px;
+    border-color: aquamarine;
+    border-style: solid;
+    border-radius: 5%;
 }
 
-/* .resultText,
-.resultSummary {
-} */
-
+.resultText,
+.resultHeading {
+    text-align: center;
+}
+.resultText {
+    font-size: 1.4rem;
+}
+.btnContainer {
+    display: grid;
+    place-items: center;
+}
 .submitBtn {
     background-color: pink;
     border-radius: 5px;
