@@ -60,11 +60,11 @@ document.addEventListener('DOMContentLoaded', function () {
         // create element for display
         const p = document.createElement('p')
         p.className = 'resultContainer' // sets the class
-        p.innerHTML = `<h3 class="resultText">Result</h3>
+        p.innerHTML = `<h3 class="resultHeading">Result</h3>
 
             <div class="resultText"> ${result} points. ${text_result}</div>
 
-        <h3 class="resultText"> Summary</h3>
+        <h3 class="resultHeading"> Summary</h3>
         
         <div class="resultText">${sleep24} hours sleep in prior 24 hours (${points24} points) 
         
@@ -76,4 +76,61 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelector('.container').append(p)
         return false
     }
+
+    let deferredPrompt
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault() // stop default mini-infobar
+        deferredPrompt = e
+
+        // Create banner dynamically
+        const banner = document.createElement('div')
+        banner.id = 'installBanner'
+        banner.style.cssText = `
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #00897b;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-family: sans-serif;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+    z-index: 9999;
+  `
+
+        banner.innerHTML = `
+    <span style="display:block; margin-bottom:0.5rem;">
+      📱 Install this app for quick access
+    </span>
+    <button id="installBtn" style="
+      background: white;
+      color: #00897b;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    ">
+      Install
+    </button>
+  `
+
+        document.body.appendChild(banner)
+
+        // Button click → show prompt
+        document
+            .getElementById('installBtn')
+            .addEventListener('click', async () => {
+                if (!deferredPrompt) return
+
+                deferredPrompt.prompt()
+                const { outcome } = await deferredPrompt.userChoice
+                console.log(`User chose to install: ${outcome}`)
+
+                deferredPrompt = null
+                banner.remove() // remove banner after click
+            })
+    })
 })
